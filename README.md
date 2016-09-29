@@ -7,4 +7,7 @@ The following branches are provided, the README file on each branch describes th
 |:------|:-----------|
 |HTML-boilerplate|Initial  boilerplate for all the exercises|
 |Contacts-list|Static UI for the contacts list view in the app|
-|Contacts-list-load|UI for the contacts list view in the app, built dynamically using data from MOCK_DATA.json and jQuery|
+|Contacts-list-2|UI for the contacts list view in the app, built dynamically using data from MOCK_DATA.json and jQuery|
+|Contacts-list-3|UI for the contacts add/edit forms in the app|
+|Contacts-list-4|Static UIs for the sign-up and login forms in the app|
+|REST-operations|Action implementation to forms and views using a RESTful API and AJAX via jQuery|
