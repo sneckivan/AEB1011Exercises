@@ -40,6 +40,6 @@ You can use a git client like [GitHub Desktop](https://desktop.github.com/) to a
 ###Source code download
 
 1. From the repo's Web page switch to the branch you want to work on using the branch drop-down
-2. Download the source code from the repo and extract the archive to your favorite folder
+2. Download the source code from the repo and extract the archive to your preferred folder
 
 Check the README file on each branch for further detail on how to launch and test your app.
