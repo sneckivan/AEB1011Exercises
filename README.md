@@ -1,4 +1,4 @@
-# AEB1011Exercises - HTML Boilerplate
+# AEB1011 Exercises - HTML Boilerplate
 This branch contains a simple boilerplate to build a Web app for contacts management.
 
 ##What's included
