@@ -1,7 +1,7 @@
 # AEB1011 Exercises
-This repository contains exercises used as support for AEB1011 - Mobile Apps Development course.
+This repository contains exercises used as support for AEB1011 - Mobile App Development course.
 
-The following branches are provided, the README file on each branch describes the branch content on detail.
+The following branches are provided, the README file on each branch describes branch content on detail.
 
 |Branch|Description|
 |:------|:-----------|
@@ -10,4 +10,8 @@ The following branches are provided, the README file on each branch describes th
 |Contacts-list-2|UI for the contacts list view in the app, built dynamically using data from MOCK_DATA.json and jQuery|
 |Contacts-list-3|UI for the contacts add/edit forms in the app|
 |Contacts-list-4|Static UIs for the sign-up and login forms in the app|
-|REST-operations|Action implementation to forms and views using a RESTful API and AJAX via jQuery|
+|REST-operations-users|User creation using jQuery to send AJAX requests to a REST API|
+|REST-operations-login|User login using jQuery to send AJAX requests to a REST API|
+|REST-operations-contacts|Get contact list using jQuery to send AJAX requests to a REST API|
+|REST-operations-contacts-2|Contacts create/update operations using jQuery to send AJAX requests to a REST API|
+|REST-operations-contacts-3|Contacts delete operation using jQuery to send AJAX requests to a REST API|
