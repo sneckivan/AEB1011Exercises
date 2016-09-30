@@ -3,6 +3,33 @@
     var headerTemplate = "<li><h4>__LETTER__</h4></li>";
     var contactTemplate = "<li class='media'><div class='media-left'><a href='#'><img class='media-object' src='holder.js/64x64' /></a></div><div class='media-body'><h4 class='media-heading'>__NAME__</h4>__TITLE__<div class='btn-group pull-right' role='group'><a href='#' class='btn btn-default'><span class='fa fa-eye'></span></a><a href='#' class='btn btn-default'><span class='fa fa-pencil'></span></a><a href='#' class='btn btn-default'><span class='fa fa-trash'></span></a></div></div></li><hr>";
     
+    //Function to render contacts
+    function renderContacts(data) {
+        //Get first letter to start
+        var idx = alphabet.indexOf(data[0].firstname.charAt(0));
+        var letter = alphabet.charAt(idx);
+
+        //Append first letter header
+        $("ul#contactsContainer").append(headerTemplate.replace("__LETTER__", letter));
+
+        //Traverse contact data
+        data.forEach(function(item) {
+            var nameLetter = item.firstname.charAt(0);
+            //If name letter and header letter are not equal must forward idx to next letter
+            if (nameLetter !== letter) {
+                while(nameLetter !== letter) {
+                    idx++;
+                    letter = alphabet.charAt(idx);
+                }
+
+                //Append letter header
+                $("ul#contactsContainer").append(headerTemplate.replace("__LETTER__", letter));
+            }
+            //Append contact entry
+            $("ul#contactsContainer").append(contactTemplate.replace("__NAME__", item.firstname+" "+item.lastname).replace("__TITLE__", item.jobTitle));
+        });
+    };
+    
     $.get("mocks/MOCK_DATA.json")
         .done(function(data) {
             //Limit data returned
@@ -17,29 +44,7 @@
                 return 0;
             });
         
-            //Get first letter to start
-            var idx = alphabet.indexOf(data[0].firstname.charAt(0));
-            var letter = alphabet.charAt(idx);
-        
-            //Append first letter header
-            $("ul#contactsContainer").append(headerTemplate.replace("__LETTER__", letter));
-        
-            //Traverse contact data
-            data.forEach(function(item) {
-                var nameLetter = item.firstname.charAt(0);
-                //If name letter and header letter are not equal must forward idx to next letter
-                if (nameLetter !== letter) {
-                    while(nameLetter !== letter) {
-                        idx++;
-                        letter = alphabet.charAt(idx);
-                    }
-                    
-                    //Append letter header
-                    $("ul#contactsContainer").append(headerTemplate.replace("__LETTER__", letter));
-                }
-                //Append contact entry
-                $("ul#contactsContainer").append(contactTemplate.replace("__NAME__", item.firstname+" "+item.lastname).replace("__TITLE__", item.jobTitle));
-            });
+            renderContacts(data);
         });
     
 })(window, $)
