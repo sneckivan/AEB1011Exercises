@@ -1,7 +1,9 @@
 # AEB1011 Exercises - HTML Contact List
-This branch contains the Static UI implementation for the contact list of the app
+This branch contains the Static UI implementation for the contact list of the app. A screenshot is presented below.
 
-<img src="https://github.com/haxdai/AEB1011Exercises/raw/master/assets/contactlistview.png" width="200px"/>
+<p align="center">
+    <img src="https://github.com/haxdai/AEB1011Exercises/raw/master/assets/contactlistview.png" width="200px"/>
+</p>
 
 ## Files added
 
