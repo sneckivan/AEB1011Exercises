@@ -1,7 +1,7 @@
 (function(window, $) {
     var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var headerTemplate = "<li><h4>__LETTER__</h4></li>";
-    var contactTemplate = "<li class='media'><div class='media-left'><a href='#'><img class='media-object' src='holder.js/64x64' /></a></div><div class='media-body'><h4 class='media-heading'>__NAME__</h4>__TITLE__<div class='btn-group pull-right' role='group'><a href='#' class='btn btn-default'><span class='fa fa-eye'></span></a><a href='#' class='btn btn-default'><span class='fa fa-pencil'></span></a><a href='#' class='btn btn-default'><span class='fa fa-trash'></span></a></div></div></li><hr>";
+    var contactTemplate = "<li class='media'><div class='media-left'><a href='#'><img class='media-object img-circle contact-photo' src='__AVATAR__' /></a></div><div class='media-body'><h4 class='media-heading'>__NAME__</h4>__TITLE__<div class='btn-group pull-right' role='group'><a href='#' data-toggle='modal' data-target='#contactDetail' class='btn btn-default'><span class='fa fa-eye'></span></a><a href='contactForm.html' class='btn btn-default'><span class='fa fa-pencil'></span></a><a href='#' class='btn btn-default'><span class='fa fa-trash'></span></a></div></div></li><hr>";
     
     //Function to render contacts
     function renderContacts(data) {
@@ -26,7 +26,7 @@
                 $("ul#contactsContainer").append(headerTemplate.replace("__LETTER__", letter));
             }
             //Append contact entry
-            $("ul#contactsContainer").append(contactTemplate.replace("__NAME__", item.firstname+" "+item.lastname).replace("__TITLE__", item.jobTitle));
+            $("ul#contactsContainer").append(contactTemplate.replace("__NAME__", item.firstname+" "+item.lastname).replace("__TITLE__", item.jobTitle).replace("__AVATAR__", item.avatar));
         });
     };
     
