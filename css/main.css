@@ -18,3 +18,26 @@
 body {
     padding-top: 70px;
 }
+
+.form-signin {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.form-signin input {
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+}
+
+.form-signin input#inputUserName {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    margin-bottom: 15px;
+}
