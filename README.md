@@ -70,7 +70,7 @@ An example document in the contacts collection is presented below to introduce i
 ````
 
 |field|required|description|
-|-|-|-|
+|:------|:-----------|---|
 |id|yes|Document's ID generated automatically by deployd|
 |firstname|yes|Contact's first name|
 |lastname|yes|Contact's last name|
