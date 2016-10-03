@@ -3,6 +3,47 @@
     var headerTemplate = "<li><h4>__LETTER__</h4></li>";
     var contactTemplate = "<li class='media'><div class='media-left'><a href='#'><img class='media-object img-circle contact-photo' src='__AVATAR__' /></a></div><div class='media-body'><h4 class='media-heading'>__NAME__</h4>__TITLE__<div class='btn-group pull-right' role='group'><a href='#' data-toggle='modal' data-target='#contactDetail' class='btn btn-default'><span class='fa fa-eye'></span></a><a href='contactForm.html' class='btn btn-default'><span class='fa fa-pencil'></span></a><a href='#' class='btn btn-default'><span class='fa fa-trash'></span></a></div></div></li><hr>";
     
+    //Initialize login form on login.html
+    if ($("form#loginForm").length) {
+        $("form#loginForm").on("submit", function(evt) {
+            //Prevent default submit behavior
+            evt.preventDefault();
+
+            //Form data placeholder
+            var formPayload = {};
+
+            //Gather form input values and create object
+            var dt = $(this).serializeArray().forEach(function(item){
+                formPayload[item.name] = item.value;
+            });
+
+            //Print data to console
+            console.log("user to log in:")
+            console.log(formPayload);
+        });
+    }
+    
+    
+    //Initialize sign-up form on signup.html
+    if ($("form#signupForm").length) {
+        $("form#signupForm").on("submit", function(evt) {
+            //Prevent default submit behavior
+            evt.preventDefault();
+
+            //Form data placeholder
+            var formPayload = {};
+
+            //Gather form input values and create object
+            var dt = $(this).serializeArray().forEach(function(item){
+                formPayload[item.name] = item.value;
+            });
+
+            //Print data to console
+            console.log("user to sign up:")
+            console.log(formPayload);
+        });
+    }
+    
     //Function to render contacts
     function renderContacts(data) {
         //Get first letter to start
@@ -30,21 +71,24 @@
         });
     };
     
-    $.get("mocks/MOCK_DATA.json")
-        .done(function(data) {
-            //Limit data returned
-            data.splice(0, 900);
-            
-            //Sort data alphabetically by firstname
-            data.sort(function(a, b) {
-                var x = a.firstname;
-                var y = b.firstname;
-                if (x < y) {return -1;}
-                if (x > y) {return 1;}
-                return 0;
+    //Get data and work on it for contacts.html
+    if ($("ul#contactsContainer").length) {
+        $.get("mocks/MOCK_DATA.json")
+            .done(function(data) {
+                //Limit data returned
+                data.splice(0, 900);
+
+                //Sort data alphabetically by firstname
+                data.sort(function(a, b) {
+                    var x = a.firstname;
+                    var y = b.firstname;
+                    if (x < y) {return -1;}
+                    if (x > y) {return 1;}
+                    return 0;
+                });
+
+                renderContacts(data);
             });
-        
-            renderContacts(data);
-        });
+    }
     
 })(window, $)

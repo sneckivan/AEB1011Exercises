@@ -1,14 +1,18 @@
-# AEB1011 Exercises - HTML Contact List
-This branch adds code to _main.js_ to load contact data from _MOCK_DATA.json_ and dynamically renders the contact list using jQuery DOM manipulation. A screenshot of the app is presented below.
+# AEB1011 Exercises - HTML Signup / Login forms
+This branch implements the UI for user sign up / login. Code is added to _main.js_ to gather form data prior to post operation via jQuery ajax. Gathered data is printed to javascript console.
+
+A screenshot of the app is presented below.
 
 <p align="center">
-    <img src="https://github.com/haxdai/AEB1011Exercises/raw/master/assets/contactlistview2.png" width="200px"/>
+    <img src="https://github.com/haxdai/AEB1011Exercises/raw/master/assets/login.png" width="200px"/>
 </p>
 
 ## Files changed
 
-* contacts.html
 * js/main.js
+* css/main.css
+* signup.html (new)
+* login.html (new)
 
 ## Testing the app
 In order to test the app you will need an HTTP server, otherwise, you must get errors on CORS requests.
