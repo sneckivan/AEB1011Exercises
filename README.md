@@ -1,14 +1,15 @@
-# AEB1011 Exercises - HTML Contact List
-This branch adds code to _main.js_ to load contact data from _MOCK_DATA.json_ and dynamically renders the contact list using jQuery DOM manipulation. A screenshot of the app is presented below.
+# AEB1011 Exercises - HTML Contact management forms
+This branch implements static UI views to add / edit contact information. A screenshot of the app is presented below.
 
 <p align="center">
-    <img src="https://github.com/haxdai/AEB1011Exercises/raw/master/assets/contactlistview2.png" width="200px"/>
+    <img src="https://github.com/haxdai/AEB1011Exercises/raw/master/assets/contactFormView.png" width="200px"/>
 </p>
 
 ## Files changed
 
 * contacts.html
 * js/main.js
+* contactForm.html (new)
 
 ## Testing the app
 In order to test the app you will need an HTTP server, otherwise, you must get errors on CORS requests.
