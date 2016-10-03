@@ -51,19 +51,19 @@ An example document in the contacts collection is presented below to introduce i
 
 ````json
 {
-    "id": 765bec71e3018het,
+    "id": 76544471e30188399,
     "firstname": "hasdai",
     "lastname": "pacheco",
     "email": "me@test.com",
     "gender": "M",
     "phoneNumbers": [
-        {"type": "work", number:"772728882"},
-        {"type": "home", number:"993993888"}
+        {"type": "work", "number":"772728882"},
+        {"type": "home", "number":"993993888"}
     ],
     "favorite": true,
     "socialNetworks": [
-        {"name": "facebook", sid:"haxdai"},
-        {"name": "twitter", sid:"@haxdai"}
+        {"name": "facebook", "sid":"haxdai"},
+        {"name": "twitter", "sid":"@haxdai"}
     ],
     "owner": "999bec71e30188d9"
 }
