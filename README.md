@@ -20,9 +20,9 @@ An example document in the users collection is presented below to introduce its 
 
 ````json
 {
-    id: 999bec71e30188d9,
-    username: "haxdai",
-    password: "98798723kjhkjchksjkjhasd"
+    "id": 999bec71e30188d9,
+    "username": "haxdai",
+    "password": "98798723kjhkjchksjkjhasd"
 }
 ````
 
@@ -51,21 +51,21 @@ An example document in the contacts collection is presented below to introduce i
 
 ````json
 {
-    id: 765bec71e3018het,
-    firstname: "hasdai,
-    lastname: "pacheco",
-    email: "me@test.com",
-    gender: "M",
-    phoneNumbers: [
-        {type: "work", number:"772728882"},
-        {type: "home", number:"993993888"}
+    "id": 765bec71e3018het,
+    "firstname": "hasdai,
+    "lastname": "pacheco",
+    "email": "me@test.com",
+    "gender": "M",
+    "phoneNumbers": [
+        {"type": "work", number:"772728882"},
+        {"type": "home", number:"993993888"}
     ],
-    favorite: true,
-    socialNetworks: [
-        {name: "facebook", sid:"haxdai"},
-        {name: "twitter", sid:"@haxdai"}
+    "favorite": true,
+    "socialNetworks": [
+        {"name": "facebook", sid:"haxdai"},
+        {"name": "twitter", sid:"@haxdai"}
     ],
-    owner: "999bec71e30188d9"
+    "owner": "999bec71e30188d9"
 }
 ````
 
