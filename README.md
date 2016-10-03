@@ -5,10 +5,10 @@ This branch contains the Static UI implementation for the contact list of the ap
     <img src="https://github.com/haxdai/AEB1011Exercises/raw/master/assets/contactlistview.png" width="200px"/>
 </p>
 
-## Files added
+## Files changed
 
-* contacts.html
-* js/vendor/holder.min.js
+* contacts.html (new)
+* js/vendor/holder.min.js (new)
 
 ## Testing the app
 In order to test the app you will need an HTTP server, otherwise, you must get errors on CORS requests.
