@@ -20,7 +20,7 @@ An example document in the users collection is presented below to introduce its 
 
 ````json
 {
-    "id": 999bec71e30188d9,
+    "id": 99988471e3018869,
     "username": "haxdai",
     "password": "98798723kjhkjchksjkjhasd"
 }
@@ -65,7 +65,7 @@ An example document in the contacts collection is presented below to introduce i
         {"name": "facebook", "sid":"haxdai"},
         {"name": "twitter", "sid":"@haxdai"}
     ],
-    "owner": "999bec71e30188d9"
+    "owner": "99988471e3018869"
 }
 ````
 
@@ -85,7 +85,7 @@ An example document in the contacts collection is presented below to introduce i
 The following table describes allowed operations on contacts collection over HTTP calls.
 
 |Operation|HTTP Method|Route|Accepts|Returns|
-|-|-|-|-|-|
+|:------|:-----------|---|---|---|
 |List contacts|GET|/contacts|Nothing|An array of objects|
 |Create a contact|POST|/contacts|A single object|The saved object (or errors)|
 |Get a specific contact|GET|/contacts/&lt;id&gt;|Nothing|A single object|
