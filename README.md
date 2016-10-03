@@ -52,7 +52,7 @@ An example document in the contacts collection is presented below to introduce i
 ````json
 {
     "id": 765bec71e3018het,
-    "firstname": "hasdai,
+    "firstname": "hasdai",
     "lastname": "pacheco",
     "email": "me@test.com",
     "gender": "M",
