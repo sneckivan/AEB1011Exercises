@@ -27,7 +27,7 @@ An example document in the users collection is presented below to introduce its 
 ````
 
 |field|required|description|
-|-|-|-|
+|:------|:-----------|---|
 |id|yes|Document's ID generated automatically by deployd|
 |username|yes|User name for creation / login|
 |password|yes|User password for creation / login. Deployd automatically hashes this field|
@@ -36,7 +36,7 @@ An example document in the users collection is presented below to introduce its 
 The following table describes allowed operations on user collection over HTTP calls.
 
 |Operation|HTTP Method|Route|Accepts|Returns|
-|-|-|-|-|-|
+|:------|:-----------|---|---|---|
 |List users|GET|/users|Nothing|An array of objects|
 |Create a user|POST|/users|A single object|The saved object (or errors)|
 |Get a specific user|GET|/users/&lt;id&gt;|Nothing|A single object|
