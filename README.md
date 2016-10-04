@@ -10,8 +10,8 @@ The following branches are provided, the README file on each branch describes br
 |[contacts-list-2](https://github.com/haxdai/AEB1011Exercises/tree/contacts-list-2)|UI for the contacts list view in the app, built dynamically using data from MOCK_DATA.json and jQuery|
 |[contacts-list-3](https://github.com/haxdai/AEB1011Exercises/tree/contacts-list-3)|Static UIs for the contacts add/edit forms in the app|
 |[contacts-list-4](https://github.com/haxdai/AEB1011Exercises/tree/contacts-list-4)|Static UIs for the sign-up and login forms in the app|
-|REST-operations-users|User creation using jQuery to send AJAX requests to a REST API|
-|REST-operations-login|User login using jQuery to send AJAX requests to a REST API|
+|[REST-operations-users](https://github.com/haxdai/AEB1011Exercises/tree/REST-operations-users)|User creation using jQuery to send AJAX requests to a REST API|
+|[REST-operations-login](https://github.com/haxdai/AEB1011Exercises/tree/REST-operations-login)|User login using jQuery to send AJAX requests to a REST API|
 |REST-operations-contacts|Get contact list using jQuery to send AJAX requests to a REST API|
 |REST-operations-contacts-2|Contacts create/update operations using jQuery to send AJAX requests to a REST API|
 |REST-operations-contacts-3|Contacts delete operation using jQuery to send AJAX requests to a REST API|
