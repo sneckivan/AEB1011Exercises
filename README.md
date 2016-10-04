@@ -1,5 +1,5 @@
 # AEB1011 Exercises - User creation via JSON API
-This branch implements AJAX calls to REST API for user creation and login.
+This branch implements AJAX calls to REST API for user creation.
 
 ## Files changed
 
