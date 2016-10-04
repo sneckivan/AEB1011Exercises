@@ -1,13 +1,9 @@
 # AEB1011 Exercises - User creation via JSON API
-This branch implements AJAX calls to REST API for user creation and login.
+This branch implements AJAX calls to REST API for user login / log-out.
 
 ## Files changed
 
 * js/main.js
-* js/vendor/toastr.min.js (new)
-* css/vendor/toastr.min.css (new)
-* signup.html
-* login.html
 
 ## About the API
 The REST API used in the examples (and from now on) is implemented using [deployd](http://deployd.com/), an Open Source platform for building APIs for Web and mobile applications. A version of the API is hosted by heroku at https://ittcontactslist.herokuapp.com/
