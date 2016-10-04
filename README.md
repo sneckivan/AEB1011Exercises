@@ -1,5 +1,5 @@
-# AEB1011 Exercises - User log-in/log-out via JSON API
-This branch implements AJAX calls to REST API for user log-in / log-out.
+# AEB1011 Exercises - Get contact list via JSON API
+This branch implements AJAX calls to get contact list from JSON API.
 
 ## Files changed
 

@@ -171,11 +171,21 @@
     
     //Get data and work on it for contacts.html
     if ($("ul#contactsContainer").length) {
-        $.get("mocks/MOCK_DATA.json")
-            .done(function(data) {
-                //Limit data returned
-                data.splice(0, 900);
-
+        $("ul#contactsContainer").append("<div class='text-center'><span class='fa fa-spinner fa-spin fa-2x'></span></div>");
+        $.ajax({
+            url: endpoint+"contacts",
+            method: "GET",
+            dataType: "json",
+            xhrFields: {
+                withCredentials: true
+            },
+            accepts: {
+                json: "application/json"
+            }
+        })
+        .done(function(data) {
+            $("ul#contactsContainer").empty();
+            if (data.length) {
                 //Sort data alphabetically by firstname
                 data.sort(function(a, b) {
                     var x = a.firstname;
@@ -186,6 +196,9 @@
                 });
 
                 renderContacts(data);
-            });
+            } else {
+                $("ul#contactsContainer").append("No contacts available. <a href='contactForm.html'>Add your first contact</a>");
+            }
+        });
     }
 })(window, $)
