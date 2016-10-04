@@ -1,5 +1,5 @@
-# AEB1011 Exercises - Get contact list via JSON API
-This branch implements AJAX calls to get contact list from JSON API.
+# AEB1011 Exercises - Update contact information via JSON API
+This branch implements AJAX calls to update contact information using JSON API.
 
 ## Files changed
 
