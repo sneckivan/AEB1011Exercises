@@ -15,6 +15,9 @@
         
         <!-- App Styles -->
         <link href="css/main.css" rel="stylesheet">
+        
+        <!-- Toastr -->
+        <link href="css/vendor/toastr.min.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,7 +37,7 @@
             <form class="form-signin" action="" method="post" id="loginForm">
                 <h2>Please sign in</h2>
                 <label for="usrName" class="sr-only">User name</label>
-                <input type="text" id="inputUserName" name="user" class="form-control" placeholder="User name" required="" autofocus="">
+                <input type="text" id="inputUserName" name="username" class="form-control" placeholder="User name" required="" autofocus="">
                 <label for="usrPassword" class="sr-only">Password</label>
                 <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
@@ -47,6 +50,8 @@
         <script src="js/vendor/bootstrap.min.js"></script>
         <!-- Include holder js to place image holders -->
         <script src="js/vendor/holder.min.js"></script>
+        <!-- Include toastr to show notifications -->
+        <script src="js/vendor/toastr.min.js"></script>
         <!-- Include main app file -->
         <script src="js/main.js"></script>
     </body>
