@@ -1,5 +1,5 @@
-# AEB1011 Exercises - User creation via JSON API
-This branch implements AJAX calls to REST API for user login / log-out.
+# AEB1011 Exercises - User log-in/log-out via JSON API
+This branch implements AJAX calls to REST API for user log-in / log-out.
 
 ## Files changed
 
