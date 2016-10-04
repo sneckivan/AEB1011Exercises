@@ -13,23 +13,27 @@
         toastr.options.preventDuplicates = true; //prevent duplicated toasts
     }
     
-    //Check if user is logged in
-    $.ajax({
-        url: endpoint+"users/me",
-        type: "GET",
-        dataType: "json",
-        xhrFields: {
-            withCredentials: true
-        },
-        accepts: {
-            json: "application/json"
-        }
-    })
-    .done(function(response) {
-        if (response.username && response.id) {
-            isLoggedIn = true;
-        }
-    });
+    //Check if user is logged in, redirect to login page if not
+    if (location.href.endsWith("contacts.html")) {
+        $.ajax({
+            url: endpoint+"users/me",
+            type: "GET",
+            dataType: "json",
+            xhrFields: {
+                withCredentials: true
+            },
+            accepts: {
+                json: "application/json"
+            }
+        })
+        .done(function(response) {
+            if (response && response.username) {
+                isLoggedIn = true;
+            } else {
+                location.href = "login.html";
+            }
+        });
+    }
     
     //Initialize login form on login.html
     if ($("form#loginForm").length) {
@@ -78,9 +82,6 @@
     //Initialize sign-up form on signup.html
     if ($("form#signupForm").length) {
         $("form#signupForm").on("submit", function(evt) {
-            //Prevent default submit behavior
-            evt.preventDefault();
-
             //Form data placeholder
             var formPayload = {};
 
@@ -89,16 +90,39 @@
                 formPayload[item.name] = item.value;
             });
 
-            //Print data to console
-            console.log("user to sign up:")
-            console.log(formPayload);
+            //Send AJAX request to create user
+            $.ajax({
+            	url: endpoint+"users",
+            	type: "POST",
+            	dataType: "json",
+                xhrFields: {
+                    withCredentials: true
+                },
+            	accepts: {
+            		json: "application/json"
+            	},
+            	data: formPayload
+            })
+            .done(function(response) {
+                if (response && response.username && response.id) {
+                    toastr.success("User "+response.username+" created, please <a href='login.html'>Sign in</a>");
+                }
+            })
+            .error(function(error) {
+                if (error.responseJSON && error.responseJSON.message) {
+                    toastr.error(error.responseJSON.message);
+                } else {
+                    toastr.error("An error occurred, try again later");
+                }
+            });
+            
+            //Prevent default submit behavior
+            evt.preventDefault();
         });
     }
     
     //Initialize log out button
     $("a#logoutButton").on("click", function(evt) {
-        //Prevent default click behavior
-        evt.preventDefault();
         $.ajax({
             url: endpoint+"users/logout",
             type: "POST",
@@ -113,6 +137,9 @@
         .done(function() {
             location.href = "login.html";    
         });
+        
+        //Prevent default click behavior
+        evt.preventDefault();
     });
     
     //Function to render contacts
@@ -159,17 +186,20 @@
             //Limit data returned
             //data.splice(0, 900);
 
-            //Sort data alphabetically by firstname
-            data.sort(function(a, b) {
-                var x = a.firstname;
-                var y = b.firstname;
-                if (x < y) {return -1;}
-                if (x > y) {return 1;}
-                return 0;
-            });
+            if (data.length) {
+                //Sort data alphabetically by firstname
+                data.sort(function(a, b) {
+                    var x = a.firstname;
+                    var y = b.firstname;
+                    if (x < y) {return -1;}
+                    if (x > y) {return 1;}
+                    return 0;
+                });
 
-            renderContacts(data);
+                renderContacts(data);
+            } else {
+                $("ul#contactsContainer").append("No contacts available. <a href='contactForm.html'>Add your first contact</a>");
+            }
         });
     }
-    
 })(window, $)

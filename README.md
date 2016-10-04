@@ -114,14 +114,16 @@ If credentials are not valid:
 {"message":"bad credentials","status":401}
 ```
 
-### Testing the API using jQuery
-An example of user login using jQuery AJAX is shown below.
+### User log-in using jQuery
 
 ```javascript
 $.ajax({
   url: "https://ittcontactslist.herokuapp.com/users/login",
   method: "POST",
   dataType: "json",
+  xhrFields: {
+    withCredentials: true
+  },
   accepts: {
     json: "application/json"
   },
@@ -131,11 +133,53 @@ $.ajax({
   }
 })
 .done(function(response){
-  console.log(response);
+  //Handle response
 })
 ```
 
-Once logged in, you must send credentials with every API request. jQuery does not include credentials by default, so your API calls must include them explicitly using <code>xhrFields: {withCredentials: true}</code>. A code snippet to get contact list is shown below.
+### User log-out using jQuery
+
+```javascript
+$.ajax({
+  url: "https://ittcontactslist.herokuapp.com/users/logout",
+  type: "POST",
+  dataType: "json",
+  xhrFields: {
+    withCredentials: true
+  },
+  accepts: {
+    json: "application/json"
+  }
+});
+```
+
+Once logged in, you must send credentials with every API request. jQuery does not include credentials by default, so your API calls must include them explicitly using <code>xhrFields: {withCredentials: true}</code>. 
+
+### Adding new users using jQuery
+To create a new user you must do a POST HTTP request to <code>/users</code> route. The request body must contain the required data according to __Users resource API operations__ table.
+
+````javascript
+$.ajax({
+  url: "https://ittcontactslist.herokuapp.com/users",
+  type: "POST",
+  dataType: "json",
+  xhrFields: {
+    withCredentials: true
+  },
+  accepts: {
+    json: "application/json"
+  },
+  data: {username:"test", password:"myNewPassword"}
+})
+.done(function(response) {
+  //Handle response
+})
+.error(function(error) {
+  //Handle error
+});
+````
+
+### Get contact list using jQuery.
 
 ```javascript
 $.ajax({
@@ -150,7 +194,7 @@ $.ajax({
   }
 })
 .done(function(data) {
-  console.log(data);
+  //Handle response data
 });
 
 ```
