@@ -77,6 +77,71 @@
         });
     }
     
+    //Initialize login form on login.html
+    if ($("form#loginForm").length) {
+        $("form#loginForm").on("submit", function(evt) {
+            //Form data placeholder
+            var formPayload = {};
+
+            //Gather form input values and create object
+            var dt = $(this).serializeArray().forEach(function(item){
+                formPayload[item.name] = item.value;
+            });
+
+            //Send AJAX request to log user
+            $.ajax({
+            url: endpoint+"users/login",
+            type: "POST",
+            dataType: "json",
+                xhrFields: {
+                    withCredentials: true
+                },
+            accepts: {
+            json: "application/json"
+            },
+            data: formPayload//JSON.stringify(formPayload)
+            })
+            .done(function(response) {
+                if (response.uid) {
+                    location.href = "contacts.html";
+                }
+            })
+            .error(function(error) {
+                if (error.responseJSON && error.responseJSON.message) {
+                    toastr.error(error.responseJSON.message);
+                } else {
+                    toastr.error("An error occurred, try again later");
+                }
+                
+            });
+            
+            //Prevent default submit behavior
+            evt.preventDefault();
+        });
+    }
+
+    //Initialize log out button
+    $("a#logoutButton").on("click", function(evt) {
+        $.ajax({
+            url: endpoint+"users/logout",
+            type: "POST",
+            dataType: "json",
+            xhrFields: {
+                withCredentials: true
+            },
+            accepts: {
+                json: "application/json"
+            }
+        })
+        .done(function() {
+            location.href = "login.html";    
+        });
+        
+        //Prevent default click behavior
+        evt.preventDefault();
+    });
+    
+    
     //Function to render contacts
     function renderContacts(data) {
         //Get first letter to start
