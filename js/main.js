@@ -13,28 +13,6 @@
         toastr.options.preventDuplicates = true; //prevent duplicated toasts
     }
     
-    //Check if user is logged in, redirect to login page if not
-    if (location.href.endsWith("contacts.html")) {
-        $.ajax({
-            url: endpoint+"users/me",
-            type: "GET",
-            dataType: "json",
-            xhrFields: {
-                withCredentials: true
-            },
-            accepts: {
-                json: "application/json"
-            }
-        })
-        .done(function(response) {
-            if (response && response.username) {
-                isLoggedIn = true;
-            } else {
-                location.href = "login.html";
-            }
-        });
-    }
-    
     //Initialize sign-up form on signup.html
     if ($("form#signupForm").length) {
         $("form#signupForm").on("submit", function(evt) {
@@ -106,35 +84,21 @@
     
     //Get data and work on it for contacts.html
     if ($("ul#contactsContainer").length) {
-        $.ajax({
-            url: endpoint+"contacts",
-            method: "GET",
-            dataType: "json",
-            xhrFields: {
-                withCredentials: true
-            },
-            accepts: {
-                json: "application/json"
-            }
-        })
+        $.get("mocks/MOCK_DATA.json")
         .done(function(data) {
             //Limit data returned
-            //data.splice(0, 900);
-
-            if (data.length) {
-                //Sort data alphabetically by firstname
-                data.sort(function(a, b) {
-                    var x = a.firstname;
-                    var y = b.firstname;
-                    if (x < y) {return -1;}
-                    if (x > y) {return 1;}
-                    return 0;
-                });
-
-                renderContacts(data);
-            } else {
-                $("ul#contactsContainer").append("No contacts available. <a href='contactForm.html'>Add your first contact</a>");
-            }
+            data.splice(0, 900);
+            
+            //Sort data alphabetically by firstname
+            data.sort(function(a, b) {
+                var x = a.firstname;
+                var y = b.firstname;
+                if (x < y) {return -1;}
+                if (x > y) {return 1;}
+                return 0;
+            });
+        
+            renderContacts(data);
         });
     }
 })(window, $)
