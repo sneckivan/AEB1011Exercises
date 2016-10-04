@@ -1,5 +1,5 @@
-# AEB1011 Exercises - Update contact information via JSON API
-This branch implements AJAX calls to update contact information using JSON API.
+# AEB1011 Exercises - Delete contact via JSON API
+This branch implements AJAX calls to delete a contact using JSON API.
 
 ## Files changed
 

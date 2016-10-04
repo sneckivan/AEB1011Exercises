@@ -3,7 +3,7 @@
     //var endpoint = "http://localhost:2403/",
         alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         headerTemplate = "<li><h4>__LETTER__</h4></li>",
-        contactTemplate = "<li class='media'><div class='media-left'><img class='media-object img-circle contact-photo' src='__AVATAR__' /></div><div class='media-body'><h4 class='media-heading'>__NAME__</h4>__TITLE__<div class='btn-group pull-right' role='group'><a href='#' data-toggle='modal' data-target='#contactDetail' class='btn btn-default'><span class='fa fa-eye'></span></a><a href='contactForm.html?id=__USERID__' class='btn btn-default'><span class='fa fa-pencil'></span></a><a href='#' class='btn btn-default'><span class='fa fa-trash'></span></a></div></div></li><hr>",
+        contactTemplate = "<li class='media'><div class='media-left'><img class='media-object img-circle contact-photo' src='__AVATAR__' /></div><div class='media-body'><h4 class='media-heading'>__NAME__</h4>__TITLE__<div class='btn-group pull-right' role='group'><a href='#' data-toggle='modal' data-target='#contactDetail' class='btn btn-default'><span class='fa fa-eye'></span></a><a href='contactForm.html?id=__USERID__' class='btn btn-default'><span class='fa fa-pencil'></span></a><a href='#' class='btn btn-default btnDelete' data-contact='__USERID__'><span class='fa fa-trash'></span></a></div></div></li><hr>",
         isLoggedIn = false;
     
     
@@ -33,90 +33,6 @@
             } else {
                 location.href = "login.html";
             }
-        });
-    }
-    
-    //Initialize contact Form on contactForm.html
-    if ($("form#contactForm").length) {
-        //Check for contact ID in URL
-        var id = getQueryStringParam("id"), method="POST";
-        
-        if (id && id.length) {
-            //Get contact info
-            $.ajax({
-                url: endpoint+"contacts/"+id,
-                method: "GET",
-                dataType: "json",
-                xhrFields: {
-                    withCredentials: true
-                },
-                accepts: {
-                    json: "application/json"
-                }
-            })
-            .done(function(data) {
-                //Pre-fill form data
-                if (data && data.id) {
-                    $("#inputFName").attr("value",data.firstname);
-                    $("#inputLName").attr("value",data.lastname);
-                    $("#inputEmail").attr("value",data.email);
-                    $("#inputTitle").attr("value",data.jobTitle || "");
-                    $("#inputPNumber").attr("value",data.phoneNumbers.length && data.phoneNumbers[0].number);
-                    $("#inputFbID").attr("value",data.socialNetworks.length && data.socialNetworks[0].sid);
-                    $("#inputTwID").attr("value",data.socialNetworks.length && data.socialNetworks[1].sid);
-                    
-                    method="PUT";
-                }
-            });
-        }
-        
-        $("form#contactForm").on("submit", function(evt) {
-            //Form data placeholder
-            var formPayload = {phoneNumbers:[], socialNetworks: []};
-
-            if (method == "PUT") { formPayload.id = id; }
-            //Gather form input values and create object
-            var dt = $(this).serializeArray()
-                .forEach(function(item) {
-                    if (item.name === "twID") {
-                        formPayload.socialNetworks.push({name:"twitter", sid: item.value});
-                    } else if (item.name === "fbID") {
-                        formPayload.socialNetworks.push({name:"facebook", sid: item.value});
-                    } else if (item.name === "phone") {
-                        formPayload.phoneNumbers.push({type:"home", number: item.value});
-                    } else {
-                        formPayload[item.name] = item.value;
-                    }
-                });
-
-            //Send AJAX request to create contact
-            $.ajax({
-                url: endpoint+"contacts",
-                type: method,
-                dataType: "json",
-                xhrFields: {
-                    withCredentials: true
-                },
-                accepts: {
-                    json: "application/json"
-                },
-                data: formPayload
-            })
-            .done(function(response) {
-                if (response && response.id) {
-                    location.href = "contacts.html";
-                }
-            })
-            .error(function(error) {
-                if (error.responseJSON && error.responseJSON.message) {
-                    toastr.error(error.responseJSON.message);
-                } else {
-                    toastr.error("An error occurred, try again later");
-                }
-            });
-            
-            //Prevent default submit behavior
-            evt.preventDefault();
         });
     }
     
@@ -341,8 +257,34 @@
                 $("ul#contactsContainer").append(headerTemplate.replace("__LETTER__", letter));
             }
             //Append contact entry
-            $("ul#contactsContainer").append(contactTemplate.replace("__NAME__", item.firstname+" "+item.lastname).replace("__TITLE__", item.jobTitle).replace("__AVATAR__", item.avatar ? item.avatar : "css/images/userPlaceHolder.jpg").replace("__USERID__", item.id));
+            $("ul#contactsContainer").append(contactTemplate.replace("__NAME__", item.firstname+" "+item.lastname).replace("__TITLE__", item.jobTitle).replace("__AVATAR__", item.avatar ? item.avatar : "css/images/userPlaceHolder.jpg").replace(/__USERID__/g, item.id));
         });
+        
+        //Initialize delete buttons
+        if($("a.btnDelete").length) {
+            $("a.btnDelete").on("click", function(evt) {
+                var cid = $(this).attr("data-contact") || "";
+                if (confirm("Are you sure to delete contact?")) {
+                    $.ajax({
+                        url: endpoint+"contacts/"+cid,
+                        method: "DELETE",
+                        dataType: "json",
+                        xhrFields: {
+                            withCredentials: true
+                        },
+                        accepts: {
+                            json: "application/json"
+                        }
+                    })
+                    .done(function(response) {
+                        location.reload();
+                    })
+                }
+                
+                //Prevent default click behavior
+                evt.preventDefault();
+            });
+        }
     };
     
     //Get data and work on it for contacts.html
