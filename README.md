@@ -15,6 +15,7 @@ The following branches are provided, the README file on each branch describes br
 |[REST-operations-contacts](https://github.com/haxdai/AEB1011Exercises/tree/REST-operations-contacts)|Get contact list using jQuery to send AJAX requests to a REST API|
 |[REST-operations-contacts-2](https://github.com/haxdai/AEB1011Exercises/tree/REST-operations-contacts-2)|Contacts create/update operations using jQuery to send AJAX requests to a REST API|
 |[REST-operations-contacts-3](https://github.com/haxdai/AEB1011Exercises/tree/REST-operations-contacts-3)|Contacts delete operation using jQuery to send AJAX requests to a REST API|
+|[ionic-bilerplate](https://github.com/haxdai/AEB1011Exercises/tree/ionic-bolierplate)|Ionic app boilerplate|
 
 ##Using this repository
 ###Git
