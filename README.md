@@ -1,45 +1,79 @@
-# AEB1011 Exercises
-This repository contains exercises used as support for AEB1011 - Mobile App Development course.
+# AEB1011 Exercises - ionic Boilerplate
+This branch contains a simple boilerplate to build an hybrid mobile app for contact management using [ionic framework](http://ionicframework.com/).
 
-The following branches are provided, the README file on each branch describes branch content on detail.
+# Getting started
+In order to work with this branch and start building your app you must first install and configure the following development tools.
 
-|Branch|Description|
-|:------|:-----------|
-|[HTML-boilerplate](https://github.com/haxdai/AEB1011Exercises/tree/HTML-boilerplate)|Initial  boilerplate for all the exercises|
-|[contacts-list](https://github.com/haxdai/AEB1011Exercises/tree/contacts-list)|Static UI for the contacts list view in the app|
-|[contacts-list-2](https://github.com/haxdai/AEB1011Exercises/tree/contacts-list-2)|UI for the contacts list view in the app, built dynamically using data from MOCK_DATA.json and jQuery|
-|[contacts-list-3](https://github.com/haxdai/AEB1011Exercises/tree/contacts-list-3)|Static UIs for the contacts add/edit forms in the app|
-|[contacts-list-4](https://github.com/haxdai/AEB1011Exercises/tree/contacts-list-4)|Static UIs for the sign-up and login forms in the app|
-|[REST-operations-users](https://github.com/haxdai/AEB1011Exercises/tree/REST-operations-users)|User creation using jQuery to send AJAX requests to a REST API|
-|[REST-operations-login](https://github.com/haxdai/AEB1011Exercises/tree/REST-operations-login)|User login using jQuery to send AJAX requests to a REST API|
-|[REST-operations-contacts](https://github.com/haxdai/AEB1011Exercises/tree/REST-operations-contacts)|Get contact list using jQuery to send AJAX requests to a REST API|
-|[REST-operations-contacts-2](https://github.com/haxdai/AEB1011Exercises/tree/REST-operations-contacts-2)|Contacts create/update operations using jQuery to send AJAX requests to a REST API|
-|[REST-operations-contacts-3](https://github.com/haxdai/AEB1011Exercises/tree/REST-operations-contacts-3)|Contacts delete operation using jQuery to send AJAX requests to a REST API|
+* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Apache Ant](http://ant.apache.org/)
+* [Git](https://git-scm.com/downloads)
+* [Nodejs](https://nodejs.org/en/)
+* [Apache cordova](https://cordova.apache.org/)
+* [Android SDK](https://developer.android.com/studio/index.html)
+* [Console](https://sourceforge.net/projects/console/) (optional for Windows users)
+* [ionic framework](http://ionicframework.com/)
 
-##Using this repository
-###Git
-If you have github installed on your computer, you can just clone the repo and switch to the branch you want to work on. 
+Please refer to the [wiki](https://github.com/haxdai/AEB1011Exercises/wiki/Development-Tools) for information on how to install the required tools for your OS.
 
-To clone the repo:
+## App structure
+A default blank app is preconfigured with the following folder structure:
 
 ````bash
-git clone https://github.com/haxdai/AEB1011Exercises.git
-cd AEB1011Exercises
+├── bower.json        //bower dependencies
+├── config.xml        //Cordova configuration
+├── gulpfile.js       //Gulp tasks
+├── ionic.config.json // ionic configuration
+├── package.json      // node dependencies
+├── README.md         //This file
+├── hooks/            // custom cordova hooks to execute on specific commands 
+├── platforms/        // iOS/Android specific builds will reside here
+├── plugins/          // where your cordova/ionic plugins will be installed
+├── scss/             // scss code, which will output to www/css/
+└── www/              // application - JS code and libs, CSS, images, etc.
+````
+## Testing the app
+In order to test the app you will need to add target platforms, generate the distribution packages and emulate or install those packages in the target platform.
+
+### Add target platforms
+
+To add iOS target platform (you must be using Mac OS X and have XCode installed)
+````sh
+ionic platform add ios
 ````
 
-To work on the _REST-operations-contacts-3_ branch:
+An app called contacts.app is generated in /platforms/ios/build
 
-````bash
-git checkout REST-operations-contacts-3
+To add Android target platform
+````sh
+ionic platform add android
 ````
-Check the README file on each branch for further detail on how to launch and test your app.
 
-###Git client
-You can use a git client like [GitHub Desktop](https://desktop.github.com/) to avoid using command line. GitHub Desktop is available for Windows and Mac OS X. Check [GitHub Desktop help](https://help.github.com/desktop/) to learn how to get started.
+### Build the app
 
-###Source code download
+To build the iOs app package
 
-1. From the repo's Web page switch to the branch you want to work on using the branch drop-down
-2. Download the source code from the repo and extract the archive to your preferred folder
+````sh
+ionic build ios
+````
 
-Check the README file on each branch for further detail on how to launch and test your app.
+To build the Android app package
+
+````sh
+ionic build android
+````
+
+An apk called _android-debug.apk_ is generated in /platforms/android/build/outputs/apk/
+
+### Test the app using emulators
+
+To emulate the iOs app
+
+````sh
+ionic emulate iOs
+````
+
+To emulate the Android app
+
+````sh
+ionic emulate android
+````
