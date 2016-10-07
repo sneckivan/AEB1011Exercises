@@ -21,3 +21,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+.has-header {
+    margin-top: $bar-height;
+}
+
+.item-input-inset.contact-search {
+    position: absolute !important;
+    label.item-input-wrapper {
+        background: none;
+        border: 1px solid #ddd;
+    }
+}

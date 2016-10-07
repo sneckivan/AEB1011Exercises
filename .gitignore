@@ -2,5 +2,6 @@ node_modules/
 platforms/
 plugins/
 #www/lib/
-#www/css/
+www/css/
 #www/js/
+.brackets.json

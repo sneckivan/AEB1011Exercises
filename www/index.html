@@ -1,45 +1,80 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>My Contacts App</title>
 
-    <link rel="manifest" href="manifest.json">
+        <link rel="manifest" href="manifest.json">
 
-    <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
+        <!-- un-comment this code to enable service worker
+        <script>
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+              .then(() => console.log('service worker installed'))
+              .catch(err => console.log('Error', err));
+          }
+        </script>-->
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+        <link href="css/ionic.app.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+        <!-- ionic/angularjs js -->
+        <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+        <!-- cordova script (this will be a 404 during development) -->
+        <script src="cordova.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
-  </head>
-  <body ng-app="starter">
-
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
-      </ion-header-bar>
-      <ion-content>
-      </ion-content>
-    </ion-pane>
-  </body>
+        <!-- your app's js -->
+        <script src="js/app.js"></script>
+    </head>
+    <body ng-app="starter">        
+        <ion-header-bar class="bar-dark">
+            <h1 class="title">My Contacts</h1>
+        </ion-header-bar>
+        <div class="bar bar-subheader item-input-inset contact-search">
+            <label class="item-input-wrapper">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search contacts">
+            </label>
+        </div>
+        <ion-content>
+            <ion-list>
+                <ion-item class="item-divider">J</ion-item>
+                <ion-item class="item-avatar">
+                    <img src="img/userPlaceHolder.jpg">
+                    <h2>John Doe</h2>
+                    <p>IT Recruiter</p>
+                </ion-item>
+                <ion-item class="item-divider">L</ion-item>
+                <ion-item class="item-avatar">
+                    <img src="img/userPlaceHolder.jpg">
+                    <h2>Leonardo da Vinci</h2>
+                    <p>Inventor</p>
+                </ion-item>
+                <ion-item class="item-divider">M</ion-item>
+                <ion-item class="item-avatar">
+                    <img src="img/userPlaceHolder.jpg">
+                    <h2>Michael Jackson</h2>
+                    <p>King of Pop</p>
+                </ion-item>
+                <ion-item class="item-avatar">
+                    <img src="img/userPlaceHolder.jpg">
+                    <h2>Morpheus</h2>
+                    <p>Captain of Nabucodon</p>
+                </ion-item>
+                <ion-item class="item-divider">V</ion-item>
+                <ion-item class="item-avatar">
+                    <img src="img/userPlaceHolder.jpg">
+                    <h2>Venkman</h2>
+                    <p>Back off, man. I'm a scientist.</p>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+        <ion-footer-bar>
+            <div class="button-bar">
+                <button class="button icon ion-person-add"></button>
+                <button class="button icon ion-log-out"></button>
+            </div>
+        </ion-footer-bar>
+    </body>
 </html>
